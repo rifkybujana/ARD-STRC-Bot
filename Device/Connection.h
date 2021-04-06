@@ -19,8 +19,8 @@ class Connection {
     String Post(String data, String key, String target);
 
   private:
-    const char* ssid = "APIN IPAN";
-    const char* pass = "5ul43m4n";
+    const char* ssid = "<WIFI SSID>";
+    const char* pass = "<WIFI PASSWORD";
     
     String url = "http://192.168.1.5:5000/";
 
