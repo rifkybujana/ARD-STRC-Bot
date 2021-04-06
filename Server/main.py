@@ -39,8 +39,4 @@ def GetRoom():
     return room
 
 if __name__ == "__main__":
-<<<<<<< HEAD
     app.run(host="0.0.0.0", debug=True)
-=======
-    app.run(debug=True)
->>>>>>> 0ad91df1cda7292bdc20f8ed938a4a554e018a30
