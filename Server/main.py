@@ -23,10 +23,10 @@ def GoToRoom():
     
     if not room:
         cur = mysql.connection.cursor()
-        cur.execute("""SELECT cur_room FROM room WHERE id = 1""")
+        cur.execute("""SELECT cur_room FROM room WHERE id = 1;""")
         room = str(cur.fetchall()[0][0])
 
-    return render_template("index.html", data=room)
+    return render_template("index.html", room=room)
 
 @app.route('/reset_position')
 def ResetPos():
@@ -37,13 +37,23 @@ def ResetPos():
 
     return redirect('/')
 
-@app.route('/Get')
+@app.route('/Get', methods=['GET'])
 def GetRoom():
     cur = mysql.connection.cursor()
-    cur.execute("""SELECT cur_room FROM room WHERE id = 1""")
+    cur.execute("""SELECT cur_room FROM room WHERE id = 1;""")
     room = str(cur.fetchall()[0][0])
 
     return room
+
+@app.route('/update', methods=['POST'])
+def Update():
+    status = request.form['status']
+    cur = mysql.connection.cursor()
+    cur.execute("""UPDATE status SET status = '{}' WHERE id = 1;""".format(status))
+    mysql.connection.commit()
+    cur.close()
+
+    return status
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)

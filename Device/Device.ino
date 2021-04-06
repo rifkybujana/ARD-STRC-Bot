@@ -1,5 +1,6 @@
 #include "Motor.h"
 #include "Sensor.h"
+#include "Connection.h"
 
 struct Sensors
 {
@@ -11,10 +12,12 @@ struct Sensors
 int motorPin[4] = { 2, 3, 4, 5 };
 Motor motor(motorPin);
 
+Connection connection;
+
 void setup() {
 
 }
 
 void loop() {
-  
+
 }

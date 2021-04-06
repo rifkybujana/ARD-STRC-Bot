@@ -7,8 +7,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
-        <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     </head>
     <body class="bg-light">
@@ -22,13 +20,13 @@
                 <div class="container pt-4">
                     <form method="POST" action="/">
                         <input type="submit" 
-                               class="btn {{ 'btn-primary' if data == '1' else 'btn-outline-primary' }} px-5 py-3 mt-4 mx-3"
+                               class="btn {{ 'btn-primary' if room == '1' else 'btn-outline-primary' }} px-5 py-3 mt-4 mx-3"
                                name="Enter_room" value="Room 1">
                         <input type="submit" 
-                               class="btn {{ 'btn-primary' if data == '2' else 'btn-outline-primary' }} px-5 py-3 mt-4 mx-3" 
+                               class="btn {{ 'btn-primary' if room == '2' else 'btn-outline-primary' }} px-5 py-3 mt-4 mx-3" 
                                name="Enter_room" value="Room 2">
                         <input type="submit" 
-                               class="btn {{ 'btn-primary' if data == '3' else 'btn-outline-primary' }} px-5 py-3 mt-4 mx-3" 
+                               class="btn {{ 'btn-primary' if room == '3' else 'btn-outline-primary' }} px-5 py-3 mt-4 mx-3" 
                                name="Enter_room" value="Room 3">
                     </form>
                 </div>
@@ -37,10 +35,10 @@
 
         <footer class="card-footer bg-light footer-font-style text-muted footer-position">
             <div class="row">
-                <div class="col-3 col-sm-2 col-md-2 col-lg-1">
+                <div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-1">
                     <a href="https://github.com/rifkybujana/ARD-STRC-Bot" target="_blank"><small>Source Code</small></a>
                 </div>
-                <div class="col-9 col-sm-10 col-md-10 col-lg-11">
+                <div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-11">
                     <a href="https://www.aseanroboticday.org/" target="_blank"><small>ASEAN Robotic Day Official Website</small></a>
                 </div>
             </div>
