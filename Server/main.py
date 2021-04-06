@@ -6,20 +6,28 @@ app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = '<Your Mysql Password>'
-app.config['MYSQL_DB'] = 'strc'
+app.config['MYSQL_USER'] = '<Your MySQL Username>'
+app.config['MYSQL_DB'] = '<Your MySQL database name>'
 
 mysql = MySQL(app)
 
 @app.route('/', methods=["POST", "GET"])
 def GoToRoom():
+    room = None
+    
     if request.method == "POST":
         room = request.form['Enter_room'][-1]
         cur = mysql.connection.cursor()
         cur.execute("""UPDATE room SET cur_room = {} WHERE id = 1;""".format(room))
         mysql.connection.commit()
         cur.close()
+    
+    if not room:
+        cur = mysql.connection.cursor()
+        cur.execute("""SELECT cur_room FROM room WHERE id = 1""")
+        room = str(cur.fetchall()[0][0])
 
-    return render_template("index.html")
+    return render_template("index.html", data=room)
 
 @app.route('/reset_position')
 def ResetPos():

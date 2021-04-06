@@ -18,11 +18,18 @@
                 <div class="typewriter">
                     <h1>Where Should i go?</h1>
                 </div>
+                <small class="text-muted" style="font-family: monospace;">The highlighted button, are the robot position</small>
                 <div class="container pt-4">
                     <form method="POST" action="/">
-                        <input type="submit" class="btn btn-outline-primary px-5 py-3 mt-4 mx-3" name="Enter_room" value="Room 1">
-                        <input type="submit" class="btn btn-outline-primary px-5 py-3 mt-4 mx-3" name="Enter_room" value="Room 2">
-                        <input type="submit" class="btn btn-outline-primary px-5 py-3 mt-4 mx-3" name="Enter_room" value="Room 3">
+                        <input type="submit" 
+                               class="btn {{ 'btn-primary' if data == '1' else 'btn-outline-primary' }} px-5 py-3 mt-4 mx-3"
+                               name="Enter_room" value="Room 1">
+                        <input type="submit" 
+                               class="btn {{ 'btn-primary' if data == '2' else 'btn-outline-primary' }} px-5 py-3 mt-4 mx-3" 
+                               name="Enter_room" value="Room 2">
+                        <input type="submit" 
+                               class="btn {{ 'btn-primary' if data == '3' else 'btn-outline-primary' }} px-5 py-3 mt-4 mx-3" 
+                               name="Enter_room" value="Room 3">
                     </form>
                 </div>
             </div>
