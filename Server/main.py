@@ -6,6 +6,7 @@ app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'Ipan218ok'
+app.config['MYSQL_PASSWORD'] = '<Your Mysql Password>'
 app.config['MYSQL_DB'] = 'strc'
 
 mysql = MySQL(app)
@@ -39,4 +40,8 @@ def GetRoom():
     return room
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     app.run(host="0.0.0.0", debug=True)
+=======
+    app.run(debug=True)
+>>>>>>> 0ad91df1cda7292bdc20f8ed938a4a554e018a30
