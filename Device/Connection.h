@@ -19,10 +19,10 @@ class Connection {
     String Post(String data, String key, String target);
 
   private:
-    const char* ssid = "<WIFI SSID>";
-    const char* pass = "<WIFI PASSWORD";
+    const char* ssid = "AVIS28";
+    const char* pass = "2019avis28";
     
-    String url = "http://192.168.1.5:5000/";
+    String url = "http://192.168.10.115:5000/";
 
     ESP8266WiFiMulti WiFiMulti;
 };

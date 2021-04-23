@@ -4,7 +4,7 @@
 Sensor::Sensor(int pin){
   _pin = pin;
 
-  pinMode(pin, OUTPUT);
+  pinMode(pin, INPUT);
 }
 
 int Sensor::operator()(){

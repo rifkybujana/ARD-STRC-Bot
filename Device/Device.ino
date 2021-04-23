@@ -2,20 +2,28 @@
 #include "Sensor.h"
 #include "Connection.h"
 
+#include <Servo.h>
+
+Servo servo;
+int pos = 0;
+
+Connection connection;
+
 struct Sensors
 {
   Sensor front;
   Sensor right;
   Sensor left;
-} sensors = { Sensor(11), Sensor(12), Sensor(13) };
+} sensor = { Sensor(D8), Sensor(D7), Sensor(D6) };
 
-int motorPin[4] = { 2, 3, 4, 5 };
-Motor motor(motorPin);
+int PWM[2] = { 5, 4 };
+int Direction[2] = { 0, 2 };
+Motor motor(PWM, Direction);
 
-Connection connection;
+int currentRoom = 0;
 
 void setup() {
-
+  servo.attach(D5);
 }
 
 void loop() {

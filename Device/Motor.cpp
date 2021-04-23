@@ -1,73 +1,57 @@
 #include "Motor.h"
 #include <Arduino.h>
 
-Motor::Motor(int* pin){
-  _pin = pin;
+Motor::Motor(int* PWM, int* Direction){
+  _PWM = PWM;
+  _Direction = Direction;
   
-  for (int i = 0; i < 4; i++){
-    pinMode(pin[i], OUTPUT);
-  }
+  pinMode(PWM[0], OUTPUT);
+  pinMode(PWM[1], OUTPUT);
+  pinMode(Direction[0], OUTPUT);
+  pinMode(Direction[1], OUTPUT);
 }
 
-void Motor::SetMotorLeft(int dir){
-  switch(dir){
-    case STOP:
-      // stop
-      digitalWrite(_pin[0], LOW);
-      digitalWrite(_pin[1], LOW);
+void Motor::SetSpeed(float Speed){
+  _Speed = Speed;
 
-    case CLOCKWISE:
-      // clockwise
-      digitalWrite(_pin[0], HIGH);
-      digitalWrite(_pin[1], LOW);
-
-    case COUNTERCLOCKWISE:
-      // counterclockwise
-      digitalWrite(_pin[0], LOW);
-      digitalWrite(_pin[1], HIGH);
-  }
-}
-
-void Motor::SetMotorRight(int dir){
-  switch(dir){
-    case STOP:
-      // stop
-      digitalWrite(_pin[2], LOW);
-      digitalWrite(_pin[3], LOW);
-
-    case CLOCKWISE:
-      // clockwise
-      digitalWrite(_pin[2], HIGH);
-      digitalWrite(_pin[3], LOW);
-
-    case COUNTERCLOCKWISE:
-      // counterclockwise
-      digitalWrite(_pin[2], LOW);
-      digitalWrite(_pin[3], HIGH);
-  }
+  digitalWrite(_PWM[0], _Speed);
+  digitalWrite(_PWM[1], _Speed);
 }
 
 void Motor::Forward(){
-  SetMotorLeft(CLOCKWISE);
-  SetMotorRight(CLOCKWISE);
+  digitalWrite(_PWM[0], _Speed);
+  digitalWrite(_PWM[1], _Speed);
+  
+  digitalWrite(_Direction[0], HIGH);
+  digitalWrite(_Direction[1], HIGH);
+}
+
+
+void Motor::Backward(){
+  digitalWrite(_PWM[0], _Speed);
+  digitalWrite(_PWM[1], _Speed);
+  
+  digitalWrite(_Direction[0], LOW);
+  digitalWrite(_Direction[1], LOW);
 }
 
 void Motor::Right(){
-  SetMotorLeft(CLOCKWISE);
-  SetMotorRight(COUNTERCLOCKWISE);
+  digitalWrite(_PWM[0], _Speed);
+  digitalWrite(_PWM[1], _Speed);
+  
+  digitalWrite(_Direction[0], HIGH);
+  digitalWrite(_Direction[1], LOW);
 }
 
 void Motor::Left(){
-  SetMotorLeft(COUNTERCLOCKWISE);
-  SetMotorRight(CLOCKWISE);
-}
-
-void Motor::Backward(){
-  SetMotorLeft(COUNTERCLOCKWISE);
-  SetMotorRight(COUNTERCLOCKWISE);
+  digitalWrite(_PWM[0], _Speed);
+  digitalWrite(_PWM[1], _Speed);
+  
+  digitalWrite(_Direction[0], LOW);
+  digitalWrite(_Direction[1], HIGH);
 }
 
 void Motor::Stop(){
-  SetMotorLeft(STOP);
-  SetMotorRight(STOP);
+  digitalWrite(_PWM[0], LOW);
+  digitalWrite(_PWM[1], LOW);
 }

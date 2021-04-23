@@ -4,9 +4,9 @@ from flask_mysqldb import MySQL
 app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_PASSWORD'] = '<Your Mysql Password>'
-app.config['MYSQL_USER'] = '<Your MySQL Username>'
-app.config['MYSQL_DB'] = '<Your MySQL database name>'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'Ipan218ok'
+app.config['MYSQL_DB'] = 'strc'
 
 mysql = MySQL(app)
 
@@ -44,16 +44,6 @@ def GetRoom():
     room = str(cur.fetchall()[0][0])
 
     return room
-
-@app.route('/update', methods=['POST'])
-def Update():
-    status = request.form['status']
-    cur = mysql.connection.cursor()
-    cur.execute("""UPDATE status SET status = '{}' WHERE id = 1;""".format(status))
-    mysql.connection.commit()
-    cur.close()
-
-    return status
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
