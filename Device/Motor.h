@@ -9,17 +9,13 @@ class Motor {
 
     void SetSpeed(float Speed);
 
-    void Forward();
-    void Backward();
-    void Right();
-    void Left();
-    void Stop();
+    void Forward(float rSpeed, float lSpeed);
+    void Backward(float rSpeed, float lSpeed);
+    void Stop(float rSpeed, float lSpeed);
 
   private:
     int* _PWM;
     int* _Direction;
-
-    float _Speed = 450;
 };
 
 #endif
