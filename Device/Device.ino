@@ -63,9 +63,6 @@ void loop()
 
         switch (lastRoom)
         {
-          case 1:
-            break;
-
           case 2:
             break;
 
@@ -73,6 +70,96 @@ void loop()
             break;
 
           default:
+          
+            // if the robot slightly tilted to left
+            if (sensor.rRight() == 0 && sensor.right() == 1) 
+            {
+              lSpeed--;
+            }
+    
+            // if the robot slightly tilted to right
+            if (sensor.lLeft() == 0 && sensor.left() == 1) 
+            {
+              rSpeed--;
+            }
+    
+            // if the robot detect a turn to left
+            if (sensor.rRight() == 0 && sensor.rRight() == 0) 
+            {
+              lSpeed = 450;
+              rSpeed = LOW;
+            }
+    
+            if (sensor.rRight() == 1 
+                && sensor.right() == 1 
+                && sensor.lLeft == 1 
+                && sensor.left() == 1 
+                && sensor.front() == 0)
+            {
+              lSpeed = 450;
+              rSpeed = 450;
+            }
+    
+            if (sensor.rRight() == 1 
+                && sensor.right() == 1 
+                && sensor.lLeft == 1 
+                && sensor.left() == 1 
+                && sensor.front() == 1)
+            {
+              motor.Stop();
+    
+              lastRoom = currentRoom;
+    
+              OpenMouth();
+    
+              delay(1000);
+    
+              CloseMouth();
+            }
+    
+            motor.Forward(rSpeed, lSpeed);
+            break;
+        }
+       
+        break;
+
+      case 2:
+
+        switch (lastRoom)
+        {
+          case 1:
+            break;
+
+          case 3:
+            break;
+
+          default:
+            break;
+        }
+      
+        break;
+
+      case 3:
+      
+        switch (lastRoom)
+        {
+          case 1:
+            break;
+
+          case 2:
+            break;
+
+          default:
+            break;
+        }
+        
+        break;
+
+      default:
+      
+        switch (lastRoom)
+        {
+          case 1:
           
             // if the robot slightly tilted to left
             if (sensor.rRight() == 0 && sensor.right() == 1) 
@@ -109,8 +196,7 @@ void loop()
                 && sensor.left() == 1 
                 && sensor.front() == 1)
             {
-              lSpeed = LOW;
-              rSpeed = LOW;
+              motor.Stop();
     
               lastRoom = currentRoom;
     
@@ -123,62 +209,11 @@ void loop()
     
             motor.Forward(rSpeed, lSpeed);
             break;
-        }
-       
-        break;
-
-      case 2:
-
-        switch (lastRoom)
-        {
-          case 1:
-            break;
 
           case 2:
             break;
 
           case 3:
-            break;
-
-          default:
-            break;
-        }
-      
-        break;
-
-      case 3:
-      
-        switch (lastRoom)
-        {
-          case 1:
-            break;
-
-          case 2:
-            break;
-
-          case 3:
-            break;
-
-          default:
-            break;
-        }
-        
-        break;
-
-      default:
-      
-        switch (lastRoom)
-        {
-          case 1:
-            break;
-
-          case 2:
-            break;
-
-          case 3:
-            break;
-
-          default:
             break;
         }
         

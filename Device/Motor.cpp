@@ -27,3 +27,8 @@ void Motor::Backward(float rSpeed, float lSpeed){
   digitalWrite(_Direction[0], LOW);
   digitalWrite(_Direction[1], LOW);
 }
+
+void Motor::Stop(){
+  digitalWrite(_PWM[0], LOW);
+  digitalWrite(_PWM[1], LOW);
+}
